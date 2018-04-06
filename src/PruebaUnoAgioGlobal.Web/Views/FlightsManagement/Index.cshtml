@@ -1,0 +1,46 @@
+﻿@using PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Responses;
+@model List<FlightListDTO>;
+@{
+    ViewData["Title"] = "Flights Management";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-6" style="padding-top: 15px; padding-bottom:15px">
+            <h2>Current Flights</h2>
+        </div>
+        <div class="col-md-6; text-right" style="padding-top: 15px; padding-bottom:15px;">
+            <a class="btn btn-primary btn-lg" role="button" asp-controller="FlightsManagement" asp-action="Create">Create New Flight</a>
+        </div>
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-right">#</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Airline</th>
+                        <th scope="col">Origin Airport</th>
+                        <th scope="col">Destination Airport</th>
+                        <th scope="col" class="text-right">Distance</th>
+                        <th scope="col" class="text-right">Fuel Consumption</th>
+                        <th scope="col" class="text-right"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var flightListDTO in Model)
+                {
+                    <tr>
+                        <th scope="row" class="text-right"><a asp-controller="FlightsManagement" asp-action="Edit" asp-route-flightId="@flightListDTO.FlightId">@flightListDTO.FlightId</a></th>
+                        <td>@flightListDTO.Code</td>
+                        <td>@flightListDTO.Airline</td>
+                        <td>@flightListDTO.OriginAirport</td>
+                        <td>@flightListDTO.DestinationAirport</td>
+                        <td class="text-right">@flightListDTO.Distance.ToString("N0")</td>
+                        <td class="text-right">@flightListDTO.FuelConsumption.ToString("N0")</td>
+                        <td><a asp-controller="FlightsManagement" asp-action="Delete" asp-route-flightId="@flightListDTO.FlightId"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                    </tr>
+            }
+                </tbody>
+            </table>
+        </div>
+    </div>

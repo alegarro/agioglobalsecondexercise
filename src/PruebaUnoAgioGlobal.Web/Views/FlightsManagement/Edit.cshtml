@@ -1,0 +1,76 @@
+﻿@using PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Requests;
+@model UpdateFlightRequest
+
+@{
+    ViewData["Title"] = "Edit " + Model.Code + " Flight";
+}
+
+<h2>Create New Flight</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" asp->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FlightId" />
+            <div class="form-group">
+                <label asp-for="Code" class="control-label">Flight Code</label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OriginAirportId" class="control-label">Origin Airport</label>
+                <select asp-for="OriginAirportId" class="form-control" data-content="@Model.OriginAirportId"></select>
+                <span asp-validation-for="OriginAirportId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinationAirportId" class="control-label">Destination Airport</label>
+                <select asp-for="DestinationAirportId" class="form-control" data-content="@Model.DestinationAirportId"></select>
+                <span asp-validation-for="DestinationAirportId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AirlineId" class="control-label">Airline</label>
+                <select asp-for="AirlineId" class="form-control" data-content="@Model.AirlineId"></select>
+                <span asp-validation-for="AirlineId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(function () {
+
+            $('#AirlineId').append(new Option('', ''));
+
+            $.get("@Url.Action("../api/airlines")", function (data) {
+
+                $.each(data, function (index, value) {
+
+                    $('#AirlineId').append(new Option(value.codeAndName, value.airlineId, false, value.airlineId == $('#AirlineId').attr('data-content')));
+                });
+            });
+
+            $('#OriginAirportId').append(new Option('', ''));
+            $('#DestinationAirportId').append(new Option('', ''));
+
+            $.get("@Url.Action("../api/airports")", function (data) {
+
+                $.each(data, function (index, value) {
+
+                    $('#OriginAirportId').append(new Option(value.codeAndName, value.airportId, false, value.airportId == $('#OriginAirportId').attr('data-content')));
+                    $('#DestinationAirportId').append(new Option(value.codeAndName, value.airportId, false, value.airportId == $('#DestinationAirportId').attr('data-content')));
+                });
+            });
+        });
+    </script>
+}
