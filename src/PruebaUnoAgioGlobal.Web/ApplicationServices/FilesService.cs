@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces;
 using PruebaUnoAgioGlobal.Web.ModelsViews;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -39,6 +41,19 @@ namespace PruebaUnoAgioGlobal.Web.ApplicationServices
 
             return await Task.FromResult(modelFileUploaded);
         }
-      
+
+        /// <summary>
+        /// Returns the different file types that support the application.
+        /// </summary>
+        /// <returns>List of SelectListItem with the different file types that support the aaplication.</returns>
+        public List<SelectListItem> GetFileTypes()
+        {
+            var fileTypesDictionary = new List<SelectListItem>();
+
+            fileTypesDictionary.Add(new SelectListItem() { Value = "1", Text = "Text File" });
+            fileTypesDictionary.Add(new SelectListItem() { Value = "2", Text = "XML File" });
+
+            return fileTypesDictionary;
+        }            
     }
 }

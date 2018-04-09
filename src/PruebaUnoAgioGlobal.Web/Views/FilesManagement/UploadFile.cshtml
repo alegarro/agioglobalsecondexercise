@@ -8,11 +8,14 @@
 <hr />
 
 <div class="row">
-    <div class="col-md-8">            
+    <div class="col-md-8">
         <div class="form-group">
             <label asp-for="TextFileReaded" class="control-label">Content of the readed file</label>
             <br />
-            <textarea asp-for="TextFileReaded" class="control-label" style="width:100%"></textarea>
-        </div>            
-    </div>
+            <textarea asp-for="TextFileReaded" class="control-label" rows="15" cols="150" style="max-width:100%"></textarea>
+        </div>
+        <div>
+            <a asp-action="Index">Back to File Upload</a>
+        </div>
+    </div>    
 </div>

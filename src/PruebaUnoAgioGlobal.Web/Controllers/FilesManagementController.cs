@@ -26,8 +26,13 @@ namespace PruebaUnoAgioGlobal.Web.Controllers
         /// </summary>
         /// <returns>Files management view.</returns>
         public IActionResult Index()
-        {            
-            return View();
+        {
+            var fileUploadViewModel = new FileUploadViewModel()
+            {
+                FileTypes = _filesService.GetFileTypes(),               
+            };
+
+            return View(fileUploadViewModel);
         }
 
         /// <summary>

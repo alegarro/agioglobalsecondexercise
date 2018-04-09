@@ -12,13 +12,50 @@
         <form asp-action="UploadFile" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="FileType" class="control-label">File type</label><br />
+                <select asp-for="FileType" asp-items="@Model.FileTypes" style="width:100%">
+                    <option>Select file type</option>
+                </select>
+                <span asp-validation-for="FileType" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="padding-top: 15px;">
                 <label asp-for="AttachedFile" class="control-label">File to Upload</label>
-                <input asp-for="AttachedFile" type="file" class="control-label" />
+                <input asp-for="AttachedFile" type="file" class="control-label" disabled="disabled" />
                 <span asp-validation-for="AttachedFile" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-success" />
+                <input id="savebutton" type="submit" value="Save" class="btn btn-success" disabled="disabled" />
             </div>
         </form>
     </div>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(function () {
+
+            $('#FileType').change(function () {
+            
+                $('#AttachedFile').prop("disabled", "");
+
+                if ($('#FileType').val() == "1") {
+
+                    $('#AttachedFile').attr('accept', 'text/plain');
+                } else if ($('#FileType').val() == "2") {
+
+                    $('#AttachedFile').attr('accept', 'text/xml');
+                } else { 
+
+                    $('#AttachedFile').prop("disabled", "disabled");
+                }
+            });
+
+            $('#AttachedFile').change(function () {
+
+                $('#savebutton').prop("disabled", "");
+            });
+        });
+    </script>
+}
