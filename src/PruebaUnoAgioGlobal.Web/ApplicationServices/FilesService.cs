@@ -24,9 +24,7 @@ namespace PruebaUnoAgioGlobal.Web.ApplicationServices
         {
             var textFileContent = string.Empty;
 
-            if ((fileModel.FileType == (int)FileType.XML_FILE || fileModel.FileType == (int)FileType.ENCRIPTED_XML_FILE) &&
-                fileModel.UserRole != (int)Roles.ADMINISTRATOR &&
-                !fileModel.AttachedFile.FileName.Contains(".ForUsersRoles."))
+            if (fileModel.UserRole != (int)Roles.ADMINISTRATOR && !fileModel.AttachedFile.FileName.Contains(".ForUsersRoles."))
             {
                 textFileContent = "User not allowed to read current files.";
             }

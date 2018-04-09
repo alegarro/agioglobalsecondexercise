@@ -15,14 +15,14 @@
             <div class="form-group">
                 <label asp-for="FileType" class="control-label">File type</label><br />
                 <select asp-for="FileType" asp-items="@Model.FileTypes" style="width:100%">
-                    <option>Select file type</option>
+                    <option value="-1">Select file type</option>
                 </select>
                 <span asp-validation-for="FileType" class="text-danger"></span>
             </div>
-            <div id="userRoleDiv" class="form-group" style="display:none">
+            <div class="form-group">
                 <label asp-for="UserRole" class="control-label">User Role</label><br />
                 <select asp-for="UserRole" asp-items="@Model.UserRoles" style="width:100%">
-                    <option>Select role</option>
+                    <option value="-1">Select role</option>
                 </select>
                 <span asp-validation-for="FileType" class="text-danger"></span>
             </div>            
@@ -46,7 +46,6 @@
 
             $('#FileType').change(function () {
 
-                $('#userRoleDiv').attr('style', 'display:none')
                 $('#AttachedFile').prop("disabled", "");
 
                 if ($('#FileType').val() == "@(((int)FileTypesEnums.FileType.TEXT_FILE).ToString())" || 
@@ -57,19 +56,28 @@
                 } else if ($('#FileType').val() == "@(((int)FileTypesEnums.FileType.XML_FILE).ToString())" ||
                            $('#FileType').val() == "@(((int)FileTypesEnums.FileType.ENCRIPTED_XML_FILE).ToString())") {
 
-                    $('#userRoleDiv').attr('style', 'display:block')
                     $('#AttachedFile').attr('accept', 'text/xml');                
                 }
                 else { 
 
                     $('#AttachedFile').prop("disabled", "disabled");
-
                 }
             });
 
             $('#AttachedFile').change(function () {
 
-                $('#savebutton').prop("disabled", "");
+                if ($('#UserRole').val() > 0) {
+
+                    $('#savebutton').prop("disabled", "");
+                }
+            });
+
+            $('#UserRole').change(function () {
+
+                if ($('#UserRole').val() > 0 && $('#AttachedFile').val() != '') {
+
+                    $('#savebutton').prop("disabled", "");
+                }                    
             });
         });
     </script>
