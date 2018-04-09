@@ -19,7 +19,7 @@
                 </select>
                 <span asp-validation-for="FileType" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div id="divUserRole" class="form-group">
                 <label asp-for="UserRole" class="control-label">User Role</label><br />
                 <select asp-for="UserRole" asp-items="@Model.UserRoles" style="width:100%">
                     <option value="-1">Select role</option>
@@ -47,6 +47,8 @@
             $('#FileType').change(function () {
 
                 $('#AttachedFile').prop("disabled", "");
+                $('#divUserRole').attr('style', 'display:block');
+                $('#UserRole').val(-1);
 
                 if ($('#FileType').val() == "@(((int)FileTypesEnums.FileType.TEXT_FILE).ToString())" || 
                     $('#FileType').val() == "@(((int)FileTypesEnums.FileType.ENCRIPTED_TEXT_FILE).ToString())") {
@@ -56,8 +58,15 @@
                 } else if ($('#FileType').val() == "@(((int)FileTypesEnums.FileType.XML_FILE).ToString())" ||
                            $('#FileType').val() == "@(((int)FileTypesEnums.FileType.ENCRIPTED_XML_FILE).ToString())") {
 
-                    $('#AttachedFile').attr('accept', 'text/xml');                
+                    $('#AttachedFile').attr('accept', 'text/xml');
+                    
+                } else if ($('#FileType').val() == "@(((int)FileTypesEnums.FileType.JSON_FILE).ToString())") {
+
+                    $('#divUserRole').attr('style', 'display:none');
+                    $('#UserRole').val(1);
+                    $('#AttachedFile').attr('accept', '.json');                
                 }
+                
                 else { 
 
                     $('#AttachedFile').prop("disabled", "disabled");

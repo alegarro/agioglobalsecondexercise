@@ -24,7 +24,9 @@ namespace PruebaUnoAgioGlobal.Web.ApplicationServices
         {
             var textFileContent = string.Empty;
 
-            if (fileModel.UserRole != (int)Roles.ADMINISTRATOR && !fileModel.AttachedFile.FileName.Contains(".ForUsersRoles."))
+            if (fileModel.FileType != (int)FileType.JSON_FILE &&
+                fileModel.UserRole != (int)Roles.ADMINISTRATOR && 
+                !fileModel.AttachedFile.FileName.Contains(".ForUsersRoles."))
             {
                 textFileContent = "User not allowed to read current files.";
             }
@@ -67,6 +69,7 @@ namespace PruebaUnoAgioGlobal.Web.ApplicationServices
 
             fileTypesDictionary.Add(new SelectListItem() { Value = ((int)FileType.TEXT_FILE).ToString(), Text = "Text File" });
             fileTypesDictionary.Add(new SelectListItem() { Value = ((int)FileType.XML_FILE).ToString(), Text = "XML File" });
+            fileTypesDictionary.Add(new SelectListItem() { Value = ((int)FileType.JSON_FILE).ToString(), Text = "JSON File" });
             fileTypesDictionary.Add(new SelectListItem() { Value = ((int)FileType.ENCRIPTED_TEXT_FILE).ToString(), Text = "Encripted Text File" });
             fileTypesDictionary.Add(new SelectListItem() { Value = ((int)FileType.ENCRIPTED_XML_FILE).ToString(), Text = "Encripted XML File" });
 
