@@ -45,7 +45,9 @@ namespace PruebaUnoAgioGlobal.Web.ApplicationServices
                 }
 
                 // Decrypt if is necesary
-                if (fileModel.FileType == (int)FileType.ENCRIPTED_TEXT_FILE || fileModel.FileType == (int)FileType.ENCRIPTED_XML_FILE)
+                if (fileModel.FileType == (int)FileType.ENCRIPTED_TEXT_FILE || 
+                    fileModel.FileType == (int)FileType.ENCRIPTED_XML_FILE ||
+                    fileModel.FileType == (int)FileType.ENCRIPTED_JSON_FILE)
                 {
                     textFileContent = string.Concat(textFileContent.Reverse()).Replace('#', 'a');
                 }                
@@ -72,6 +74,7 @@ namespace PruebaUnoAgioGlobal.Web.ApplicationServices
             fileTypesDictionary.Add(new SelectListItem() { Value = ((int)FileType.JSON_FILE).ToString(), Text = "JSON File" });
             fileTypesDictionary.Add(new SelectListItem() { Value = ((int)FileType.ENCRIPTED_TEXT_FILE).ToString(), Text = "Encripted Text File" });
             fileTypesDictionary.Add(new SelectListItem() { Value = ((int)FileType.ENCRIPTED_XML_FILE).ToString(), Text = "Encripted XML File" });
+            fileTypesDictionary.Add(new SelectListItem() { Value = ((int)FileType.ENCRIPTED_JSON_FILE).ToString(), Text = "Encripted JSON File" });
 
             return fileTypesDictionary;
         }

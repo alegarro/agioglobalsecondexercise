@@ -60,7 +60,8 @@
 
                     $('#AttachedFile').attr('accept', 'text/xml');
                     
-                } else if ($('#FileType').val() == "@(((int)FileTypesEnums.FileType.JSON_FILE).ToString())") {
+                } else if ($('#FileType').val() == "@(((int)FileTypesEnums.FileType.JSON_FILE).ToString())" ||
+                           $('#FileType').val() == "@(((int)FileTypesEnums.FileType.ENCRIPTED_JSON_FILE).ToString())") {
 
                     $('#divUserRole').attr('style', 'display:none');
                     $('#UserRole').val(1);

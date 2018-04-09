@@ -15,6 +15,7 @@
             ENCRIPTED_TEXT_FILE,
             ENCRIPTED_XML_FILE,
             JSON_FILE,
+            ENCRIPTED_JSON_FILE,
         }
     }
 }
