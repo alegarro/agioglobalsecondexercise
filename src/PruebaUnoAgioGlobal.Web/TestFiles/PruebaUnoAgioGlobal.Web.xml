@@ -1,0 +1,474 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PruebaUnoAgioGlobal.Web</name>
+    </assembly>
+    <members>
+        <member name="T:PruebaUnoAgioGlobal.Web.ApplicationServices.AirlinesService">
+            <summary>
+            Airlines Application Service.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.AirlinesService.#ctor(PruebaUnoAgioGlobal.Core.Interfaces.Repositories.IRepository{PruebaUnoAgioGlobal.Core.Entities.Airline})">
+            <summary>
+            Generates a new instance of the airline application service.
+            </summary>
+            <param name="airlinesRepository">Airlines Repository Instance.</param>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.AirlinesService.GetAll">
+            <summary>
+            Returns a list of the airlines stored in the system.
+            </summary>
+            <returns>List of the airlines.</returns>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.ApplicationServices.AirportsService">
+            <summary>
+            Airports Application Service.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.AirportsService.#ctor(PruebaUnoAgioGlobal.Core.Interfaces.Repositories.IRepository{PruebaUnoAgioGlobal.Core.Entities.Airport})">
+            <summary>
+            Generates a new instance of the airport application service.
+            </summary>
+            <param name="airportsRepository">Airport Repository Instance.</param>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.AirportsService.GetAll">
+            <summary>
+            Returns a list of the airports stored in the system.
+            </summary>
+            <returns>List of the airports.</returns>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.ApplicationServices.FilesService">
+            <summary>
+            Files Application Service.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.FilesService.ReadTextFile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Reads the file bytes and output the tex of the file.
+            </summary>
+            <param name="file">File uploaded by the user.</param>
+            <returns>Text included in the file.</returns>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.FilesService.GetFileTypes">
+            <summary>
+            Returns the different file types that support the application.
+            </summary>
+            <returns>Dictonary with the different file types that support the application.</returns>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.ApplicationServices.FlightsService">
+            <summary>
+            Flights Application Service.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.FlightsService.#ctor(PruebaUnoAgioGlobal.Core.Interfaces.Repositories.IFlightsRepository,PruebaUnoAgioGlobal.Core.Interfaces.BusinessServices.IFlightsBusinessService,PruebaUnoAgioGlobal.Core.Interfaces.Repositories.IRepository{PruebaUnoAgioGlobal.Core.Entities.Airport})">
+            <summary>
+            Generates a new instance of the flights application service.
+            </summary>
+            <param name="flightsRepository">Flights Repository Instance.</param>
+            <param name="flightsBusinessService">Flights Business Service Instance</param>
+            <param name="airportsRepository">Airports Repository Instance.</param>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.FlightsService.GetAll">
+            <summary>
+            Returns a list of the flights stored in the system.
+            </summary>
+            <returns>List of the flights.</returns>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.FlightsService.GetById(PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Requests.GetFlightByIdRequest)">
+            <summary>
+            Gets a flight by Id.
+            </summary>
+            <param name="request">Request with the id of the flight to get.</param>
+            <returns>Flight data.</returns>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.FlightsService.Insert(PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Requests.CreateFlightRequest)">
+            <summary>
+            Inserts a new flight in the database.
+            </summary>
+            <param name="request">Flight data to insert in the database.</param>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.FlightsService.Update(PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Requests.UpdateFlightRequest)">
+            <summary>
+            Updates a flight in the database.
+            </summary>
+            <param name="request">Flight data to update in the database.</param>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.FlightsService.Delete(PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Requests.DeleteFlightRequest)">
+            <summary>
+            Deletes a flight in the database.
+            </summary>
+            <param name="request">Request with the id of the flight to delete.</param>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IAirlinesService">
+            <summary>
+            Interface for the airlines application service.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IAirlinesService.GetAll">
+            <summary>
+            Gets the airlines list.
+            </summary>
+            <returns>Airlines List.</returns>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IAirportsService">
+            <summary>
+            Interface for the flights application service.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IAirportsService.GetAll">
+            <summary>
+            Gets the airports list.
+            </summary>
+            <returns>Airports List.</returns>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IFilesService">
+            <summary>
+            Interface for the files application service.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IFilesService.ReadTextFile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Reads the file bytes and output the tex of the file.
+            </summary>
+            <param name="file">File uploaded by the user.</param>
+            <returns>Text included in the file.</returns>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IFilesService.GetFileTypes">
+            <summary>
+            Returns the different file types that support the application.
+            </summary>
+            <returns>Diccionario con los distintos tipos de ficheros que podemos leer en la aplicación.</returns>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IFlightsService">
+            <summary>
+            Interface for the flights application service.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IFlightsService.GetAll">
+            <summary>
+            Gets the flights list.
+            </summary>
+            <returns>Flights List.</returns>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IFlightsService.GetById(PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Requests.GetFlightByIdRequest)">
+            <summary>
+            Gets a flight by Id.
+            </summary>
+            <param name="request">Request with the id of the flight to get.</param>
+            <returns>Flight data.</returns>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IFlightsService.Insert(PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Requests.CreateFlightRequest)">
+            <summary>
+            Inserts a new flight in the database.
+            </summary>
+            <param name="request">Flight data to insert in the database.</param>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IFlightsService.Update(PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Requests.UpdateFlightRequest)">
+            <summary>
+            Updates a flight in the database.
+            </summary>
+            <param name="request">Flight data to update in the database.</param>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IFlightsService.Delete(PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Requests.DeleteFlightRequest)">
+            <summary>
+            Deletes a flight in the database.
+            </summary>
+            <param name="request">Request with the id of the flight to delete.</param>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.ControllersApi.AirlinesController">
+            <summary>
+            Airlines Controller.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ControllersApi.AirlinesController.#ctor(PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IAirlinesService)">
+            <summary>
+            Generates a new instance of the airlines controller.
+            </summary>
+            <param name="airlinesService">Airline Application Service.</param>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ControllersApi.AirlinesController.GetAll">
+            <summary>
+            Method that gets the airlines list.
+            </summary>
+            <returns>Airlines list.</returns>        
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.ControllersApi.AirportsController">
+            <summary>
+            Airports Controller.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ControllersApi.AirportsController.#ctor(PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IAirportsService)">
+            <summary>
+            Generates a new instance of the airports controller.
+            </summary>
+            <param name="airportsService">Airports Service.</param>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ControllersApi.AirportsController.GetAll">
+            <summary>
+            Method that gets the airports list.
+            </summary>
+            <returns>Airports list.</returns>              
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.ControllersApi.FlightsController">
+            <summary>
+            Flights Controller.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ControllersApi.FlightsController.#ctor(PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IFlightsService)">
+            <summary>
+            Generates a new instance of the flights controller.
+            </summary>
+            <param name="flightsService">Flights Service.</param>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ControllersApi.FlightsController.GetAll">
+            <summary>
+            Method that gets the flights list.
+            </summary>
+            <returns>Flights list.</returns>              
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ControllersApi.FlightsController.GetById(PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Requests.GetFlightByIdRequest)">
+            <summary>
+            Method that gets a flights with the requested id.
+            </summary>
+            <returns>Flight with the requested id.</returns>              
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ControllersApi.FlightsController.CreateFlight(PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Requests.CreateFlightRequest)">
+            <summary>
+            Method that creates a new flight in the database.
+            </summary>             
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ControllersApi.FlightsController.UpdateFlight(System.Int32,PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Requests.UpdateFlightRequest)">
+            <summary>
+            Method that updates a flight with the requested id in the database.
+            </summary>            
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.ControllersApi.FlightsController.DeleteFlight(PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Requests.DeleteFlightRequest)">
+            <summary>
+            Method that removes a flight with the requested id from the database.
+            </summary>           
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.Controllers.FilesManagementController">
+            <summary>
+            Controller for flights management views.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Controllers.FilesManagementController.#ctor(PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IFilesService)">
+            <summary>
+            Generates a new instance of the Files Management Controller.
+            </summary>
+            <param name="filesService">Files application service.</param>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Controllers.FilesManagementController.Index">
+            <summary>
+            Loads the main files management view.
+            </summary>
+            <returns>Files management view.</returns>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Controllers.FilesManagementController.UploadFile(PruebaUnoAgioGlobal.Web.ModelsViews.FileUploadViewModel)">
+            <summary>
+            Uploads the files and show the file content in the loaded page.
+            </summary>
+            <returns>Upload file view.</returns>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.Controllers.FlightsManagementController">
+            <summary>
+            Controller for flights management views.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Controllers.FlightsManagementController.#ctor(PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces.IFlightsService)">
+            <summary>
+            Generates a new instance of the Flights Management Controller.
+            </summary>
+            <param name="flightsService">Flights application service.</param>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Controllers.FlightsManagementController.Index">
+            <summary>
+            Loads the main flight management view.
+            </summary>
+            <returns>Flight management view.</returns>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Controllers.FlightsManagementController.Create">
+            <summary>
+            Loads the create flight view.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Controllers.FlightsManagementController.Create(PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Requests.CreateFlightRequest)">
+            <summary>
+            Stores a new flight.
+            </summary>
+            <param name="request">Request to create a new flight.</param>
+            <returns>Redirect to index view.</returns>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Controllers.FlightsManagementController.Edit(System.Int32)">
+            <summary>
+            Loads the edit flight view.
+            </summary>
+            <returns>Flight edit view.</returns>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Controllers.FlightsManagementController.Edit(PruebaUnoAgioGlobal.Web.ModelsApi.Flights.Requests.UpdateFlightRequest)">
+            <summary>
+            Updates a flight.
+            </summary>
+            <param name="request">Request to update a flight.</param>
+            <returns>Redirect to index view.</returns>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Controllers.FlightsManagementController.Delete(System.Int32)">
+            <summary>
+            Deletes selected flight.
+            </summary>
+            <returns>Flight id for delete.</returns>
+            <returns>Redirect to index view.</returns>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Controllers.FlightsManagementController.Error">
+            <summary>
+            Loads the error view.
+            </summary>
+            <returns>Error view.</returns>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.Extensions.ServiceExtensions">
+            <summary>
+            Static class for add services to the indepency injector.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Extensions.ServiceExtensions.AddBusinessServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Method that adds bussiness services.
+            </summary>
+            <param name="services">Services collection.</param>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Extensions.ServiceExtensions.AddApplicationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Method that adds application services.
+            </summary>
+            <param name="services">Services collection.</param>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Extensions.ServiceExtensions.AddInfraestructureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Method that adds infraestructure services.
+            </summary>
+            <param name="services">Services collection.</param>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.Mappers.AirlinesProfile">
+            <summary>
+            Profile for AutoMapper to map Airline entity.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Mappers.AirlinesProfile.#ctor">
+            <summary>
+            Generates a new instance of the class.
+            </summary>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.Mappers.AirportsProfile">
+            <summary>
+            Profile for AutoMapper to map Airport entity.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Mappers.AirportsProfile.#ctor">
+            <summary>
+            Generates a new instance of the class.
+            </summary>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.Mappers.FlightsProfile">
+            <summary>
+            Profile for AutoMapper to map Flights entity.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Mappers.FlightsProfile.#ctor">
+            <summary>
+            Generates a new instance of the class.
+            </summary>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.Models.Provincias.Validators.DeleteFlightRequestValidator">
+            <summary>
+            Class that implements the validator for the DeleteFlightRequest.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Models.Provincias.Validators.DeleteFlightRequestValidator.#ctor">
+            <summary>
+            Generates a new instance of the DeleteFlightRequest validator.
+            </summary>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.Models.Provincias.Validators.GetFlightByIdRequestValidator">
+            <summary>
+            Class that implements the validator for the GetFlightByIdRequest.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Models.Provincias.Validators.GetFlightByIdRequestValidator.#ctor">
+            <summary>
+            Generates a new instance of the GetFlightByIdRequest validator.
+            </summary>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.Models.Provincias.Validators.UpdateFlightRequestValidator">
+            <summary>
+            Class that implements the validator for the UpdateFlightRequest.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Models.Provincias.Validators.UpdateFlightRequestValidator.#ctor">
+            <summary>
+            Generates a new instance of the UpdateFlightRequest validator.
+            </summary>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.Resources.ValidationMessages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:PruebaUnoAgioGlobal.Web.Resources.ValidationMessages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:PruebaUnoAgioGlobal.Web.Resources.ValidationMessages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:PruebaUnoAgioGlobal.Web.Resources.ValidationMessages.FieldCannotBeEmpty">
+            <summary>
+              Looks up a localized string similar to The field {0} can&apos;t be empty..
+            </summary>
+        </member>
+        <member name="T:PruebaUnoAgioGlobal.Web.Startup">
+            <summary>
+            Class for the application startup.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Generates a new instance of the class.
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="P:PruebaUnoAgioGlobal.Web.Startup.Configuration">
+            <summary>
+            Configuration of the application.
+            </summary>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configuration of the application services.
+            </summary>
+            <param name="services">Services.</param>
+        </member>
+        <member name="M:PruebaUnoAgioGlobal.Web.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Application configuration.
+            </summary>
+            <param name="app">Application.</param>
+            <param name="env">Environment.</param>
+            <param name="loggerFactory">Logger.</param>
+        </member>
+        <member name="T:FichaObraMobileAPI.Web.Models.Provincias.Validators.CreateFlightRequestValidator">
+            <summary>
+            Class that implements the validator for the UpdateFlightRequest.
+            </summary>
+        </member>
+        <member name="M:FichaObraMobileAPI.Web.Models.Provincias.Validators.CreateFlightRequestValidator.#ctor">
+            <summary>
+            Generates a new instance of the CreateFlightRequest validator.
+            </summary>
+        </member>
+    </members>
+</doc>
