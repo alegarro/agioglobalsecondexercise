@@ -42,7 +42,7 @@ namespace PruebaUnoAgioGlobal.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadFile(FileUploadViewModel model)
         {
-            var readedTextFile = await _filesService.ReadTextFile(model.AttachedFile);
+            var readedTextFile = await _filesService.ReadTextFile(model);
 
             return View(readedTextFile);
         }

@@ -2,9 +2,12 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces;
 using PruebaUnoAgioGlobal.Web.ModelsViews;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
+using static PruebaUnoAgioGlobal.Web.Enum.FileTypesEnums;
 
 namespace PruebaUnoAgioGlobal.Web.ApplicationServices
 {
@@ -16,15 +19,15 @@ namespace PruebaUnoAgioGlobal.Web.ApplicationServices
         /// <summary>
         /// Reads the file bytes and output the tex of the file.
         /// </summary>
-        /// <param name="file">File uploaded by the user.</param>
+        /// <param name="fileModel">Model with data and the file uploaded by the user.</param>
         /// <returns>Text included in the file.</returns>
-        public async Task<FileUploadedViewModel> ReadTextFile(IFormFile file)        
+        public async Task<FileUploadedViewModel> ReadTextFile(FileUploadViewModel fileModel)
         {
             var textFileContent = string.Empty;
 
-            if (file != null)
+            if (fileModel.AttachedFile != null)
             {
-                using (var reader = new StreamReader(file.OpenReadStream()))
+                using (var reader = new StreamReader(fileModel.AttachedFile.OpenReadStream()))
                 {
                     textFileContent = reader.ReadToEnd();
                 }                
@@ -32,6 +35,12 @@ namespace PruebaUnoAgioGlobal.Web.ApplicationServices
             else
             {
                 textFileContent = "A valid file was not uploaded.";
+            }
+
+            // Decrypt if is necesary
+            if (fileModel.FileType == (int)FileType.ENCRIPTED_TEXT_FILE)
+            {
+                textFileContent = string.Concat(textFileContent.Reverse()).Replace('#', 'a');
             }
 
             var modelFileUploaded = new FileUploadedViewModel()
@@ -52,6 +61,7 @@ namespace PruebaUnoAgioGlobal.Web.ApplicationServices
 
             fileTypesDictionary.Add(new SelectListItem() { Value = "1", Text = "Text File" });
             fileTypesDictionary.Add(new SelectListItem() { Value = "2", Text = "XML File" });
+            fileTypesDictionary.Add(new SelectListItem() { Value = "3", Text = "Encripted File" });
 
             return fileTypesDictionary;
         }            
