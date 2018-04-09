@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces;
 using PruebaUnoAgioGlobal.Web.ModelsViews;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,7 +24,7 @@ namespace PruebaUnoAgioGlobal.Web.ApplicationServices
         {
             var textFileContent = string.Empty;
 
-            if (fileModel.FileType == (int)FileType.XML_FILE &&
+            if ((fileModel.FileType == (int)FileType.XML_FILE || fileModel.FileType == (int)FileType.ENCRIPTED_XML_FILE) &&
                 fileModel.UserRole != (int)Roles.ADMINISTRATOR &&
                 !fileModel.AttachedFile.FileName.Contains(".ForUsersRoles."))
             {
@@ -47,7 +45,7 @@ namespace PruebaUnoAgioGlobal.Web.ApplicationServices
                 }
 
                 // Decrypt if is necesary
-                if (fileModel.FileType == (int)FileType.ENCRIPTED_TEXT_FILE)
+                if (fileModel.FileType == (int)FileType.ENCRIPTED_TEXT_FILE || fileModel.FileType == (int)FileType.ENCRIPTED_XML_FILE)
                 {
                     textFileContent = string.Concat(textFileContent.Reverse()).Replace('#', 'a');
                 }                
@@ -71,7 +69,8 @@ namespace PruebaUnoAgioGlobal.Web.ApplicationServices
 
             fileTypesDictionary.Add(new SelectListItem() { Value = ((int)FileType.TEXT_FILE).ToString(), Text = "Text File" });
             fileTypesDictionary.Add(new SelectListItem() { Value = ((int)FileType.XML_FILE).ToString(), Text = "XML File" });
-            fileTypesDictionary.Add(new SelectListItem() { Value = ((int)FileType.ENCRIPTED_TEXT_FILE).ToString(), Text = "Encripted File" });
+            fileTypesDictionary.Add(new SelectListItem() { Value = ((int)FileType.ENCRIPTED_TEXT_FILE).ToString(), Text = "Encripted Text File" });
+            fileTypesDictionary.Add(new SelectListItem() { Value = ((int)FileType.ENCRIPTED_XML_FILE).ToString(), Text = "Encripted XML File" });
 
             return fileTypesDictionary;
         }

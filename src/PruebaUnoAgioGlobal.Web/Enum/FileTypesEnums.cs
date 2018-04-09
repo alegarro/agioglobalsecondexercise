@@ -1,18 +1,19 @@
 ﻿namespace PruebaUnoAgioGlobal.Web.Enum
 {
     /// <summary>
-    /// Clase que define los tipos de ficheros que maneja la aplicación.
+    /// Class that define file types that manage the application.
     /// </summary>
     public class FileTypesEnums
     {
         /// <summary>
-        /// Enumerado con los tipos de ficheros que maneja la aplicación.
+        /// Enum with the file types managed by the application.
         /// </summary>
         public enum FileType
         {
             TEXT_FILE = 1,
             XML_FILE,
             ENCRIPTED_TEXT_FILE,
+            ENCRIPTED_XML_FILE,
         }
     }
 }

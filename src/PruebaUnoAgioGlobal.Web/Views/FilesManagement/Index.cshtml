@@ -49,19 +49,21 @@
                 $('#userRoleDiv').attr('style', 'display:none')
                 $('#AttachedFile').prop("disabled", "");
 
-                if ($('#FileType').val() == "@(((int)FileTypesEnums.FileType.TEXT_FILE).ToString())") {
+                if ($('#FileType').val() == "@(((int)FileTypesEnums.FileType.TEXT_FILE).ToString())" || 
+                    $('#FileType').val() == "@(((int)FileTypesEnums.FileType.ENCRIPTED_TEXT_FILE).ToString())") {
 
                     $('#AttachedFile').attr('accept', 'text/plain');
-                } else if ($('#FileType').val() == "@(((int)FileTypesEnums.FileType.XML_FILE).ToString())") {
+
+                } else if ($('#FileType').val() == "@(((int)FileTypesEnums.FileType.XML_FILE).ToString())" ||
+                           $('#FileType').val() == "@(((int)FileTypesEnums.FileType.ENCRIPTED_XML_FILE).ToString())") {
 
                     $('#userRoleDiv').attr('style', 'display:block')
-                    $('#AttachedFile').attr('accept', 'text/xml');
-                } else if ($('#FileType').val() == "@(((int)FileTypesEnums.FileType.ENCRIPTED_TEXT_FILE).ToString())") {
-
-                    $('#AttachedFile').attr('accept', 'text/plain');
-                } else { 
+                    $('#AttachedFile').attr('accept', 'text/xml');                
+                }
+                else { 
 
                     $('#AttachedFile').prop("disabled", "disabled");
+
                 }
             });
 

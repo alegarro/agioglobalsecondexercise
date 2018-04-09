@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using PruebaUnoAgioGlobal.Web.ModelsViews;
 using System.Collections.Generic;
 using System.Threading.Tasks;
