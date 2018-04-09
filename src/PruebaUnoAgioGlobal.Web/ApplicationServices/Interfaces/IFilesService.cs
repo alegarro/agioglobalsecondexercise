@@ -23,5 +23,11 @@ namespace PruebaUnoAgioGlobal.Web.ApplicationServices.Interfaces
         /// </summary>
         /// <returns>List of SelectListItem with the different file types that support the aaplication.</returns>
         List<SelectListItem> GetFileTypes();
+
+        /// <summary>
+        /// Returns the different user roles that support the application.
+        /// </summary>
+        /// <returns>List of SelectListItem with the different user roles that support the aaplication.</returns>
+        List<SelectListItem> GetUserRoles();
     }
 }

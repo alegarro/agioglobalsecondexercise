@@ -8,7 +8,11 @@ namespace PruebaUnoAgioGlobal.Web.ModelsViews
     {
         public int FileType { get; set; }
 
+        public int UserRole { get; set; }
+
         public List<SelectListItem> FileTypes { get; set; }
+
+        public List<SelectListItem> UserRoles { get; set; }
 
         public IFormFile AttachedFile { get; set; }        
     }

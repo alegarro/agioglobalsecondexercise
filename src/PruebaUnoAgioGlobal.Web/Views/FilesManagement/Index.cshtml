@@ -1,4 +1,5 @@
 ﻿@using  PruebaUnoAgioGlobal.Web.ModelsViews;
+@using PruebaUnoAgioGlobal.Web.Enum;
 @model FileUploadViewModel
 @{
     ViewData["Title"] = "File Reader";
@@ -18,6 +19,13 @@
                 </select>
                 <span asp-validation-for="FileType" class="text-danger"></span>
             </div>
+            <div id="userRoleDiv" class="form-group" style="display:none">
+                <label asp-for="UserRole" class="control-label">User Role</label><br />
+                <select asp-for="UserRole" asp-items="@Model.UserRoles" style="width:100%">
+                    <option>Select role</option>
+                </select>
+                <span asp-validation-for="FileType" class="text-danger"></span>
+            </div>            
             <div class="form-group" style="padding-top: 15px;">
                 <label asp-for="AttachedFile" class="control-label">File to Upload</label>
                 <input asp-for="AttachedFile" type="file" class="control-label" disabled="disabled" />
@@ -37,16 +45,18 @@
         $(function () {
 
             $('#FileType').change(function () {
-            
+
+                $('#userRoleDiv').attr('style', 'display:none')
                 $('#AttachedFile').prop("disabled", "");
 
-                if ($('#FileType').val() == "1") {
+                if ($('#FileType').val() == "@(((int)FileTypesEnums.FileType.TEXT_FILE).ToString())") {
 
                     $('#AttachedFile').attr('accept', 'text/plain');
-                } else if ($('#FileType').val() == "2") {
+                } else if ($('#FileType').val() == "@(((int)FileTypesEnums.FileType.XML_FILE).ToString())") {
 
+                    $('#userRoleDiv').attr('style', 'display:block')
                     $('#AttachedFile').attr('accept', 'text/xml');
-                } else if ($('#FileType').val() == "3") {
+                } else if ($('#FileType').val() == "@(((int)FileTypesEnums.FileType.ENCRIPTED_TEXT_FILE).ToString())") {
 
                     $('#AttachedFile').attr('accept', 'text/plain');
                 } else { 

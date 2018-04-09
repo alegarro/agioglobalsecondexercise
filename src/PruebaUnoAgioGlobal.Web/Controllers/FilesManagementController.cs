@@ -29,7 +29,8 @@ namespace PruebaUnoAgioGlobal.Web.Controllers
         {
             var fileUploadViewModel = new FileUploadViewModel()
             {
-                FileTypes = _filesService.GetFileTypes(),               
+                FileTypes = _filesService.GetFileTypes(),
+                UserRoles = _filesService.GetUserRoles(),
             };
 
             return View(fileUploadViewModel);
